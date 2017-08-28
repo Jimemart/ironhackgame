@@ -1,6 +1,6 @@
 #board{
   background: lightblue;
-  height: 900px;
+  height: 800px;
   width: 800px;
   position: relative;
   margin: 0 auto;
@@ -25,4 +25,12 @@
 .right{
   bottom: 276;
   left: 500;
+}
+.top{
+  bottom: 414;
+  left: 100;
+}
+.high{
+  bottom: 552;
+  left: 300;
 }

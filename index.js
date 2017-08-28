@@ -4,9 +4,10 @@ var player;
 $(document).ready(function(){
 
   $("#start").on("click",function(){
-    player = new Player(350,20,0,10,2);
+    tiles = new Tile();
+    player = new Player(350,40,0,0,2);
     game = new Game();
-    game.renderPlayer();
+
     var myInterval = setInterval(function(){
       player.update();
     },30);
@@ -24,50 +25,16 @@ $(document).ready(function(){
       game.keyLeft = true;
     }
   }).keyup(function(e){
-    if(e.keyCode===38){
+    if(e.keyCode===38 ){
       game.keyJump = false;
+      player.isFloor = false;
     }
     if(e.keyCode===39){
       game.keyRight = false;
+      player.speedX = 0;
     }
     if(e.keyCode===37){
       game.keyLeft = false;
+      player.speedX = 0;
     }
   });
-
-  // function checkControls(){
-  //   if(!player.isFloor){
-  //     player.goingUp();
-  //   }
-  //
-  //   if(player.speedY <= 0){
-  //     player.isFloor = false;
-  //     $(".tile").each(function(){
-  //       if(checkOnTile($(this)) && parseInt($(this).css("bottom")) >= player.y - $(this).height()){
-  //         $("#player").css("bottom", $(this).css("bottom")+ "px");
-  //         player.isFloor = true;
-  //         player.speedY = 0;
-  //       }
-  //     });
-  //
-  //   }
-  //   if(game.keyJump){
-  //     player.moveUp();
-  //   }
-  //   if(game.keyRight){
-  //     player.moveRight();
-  //   }
-  //   if(game.keyLeft){
-  //     player.moveLeft();
-  //   }
-  // }
-function checkOnTile(tilesToCheck){
-  var resultX = false;
-  if(player.x >= parseInt(tilesToCheck.css("left")) && player.x<= parseInt(tilesToCheck.css("left")) + tilesToCheck.width()){
-    resultX = true;
-  }
-  else{
-    resultX = false;
-  }
-  return resultX;
-}
