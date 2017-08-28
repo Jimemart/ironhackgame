@@ -9,7 +9,7 @@ $(document).ready(function(){
     game.renderPlayer();
     var myInterval = setInterval(function(){
       checkControls();
-    },40);
+    },25);
   });
 });
   $(document).keydown(function(e){
@@ -38,6 +38,7 @@ $(document).ready(function(){
     if(!player.isFloor){
       player.speedY -= player.gravity;
       player.y += player.speedY;
+      console.log(player.y);
       $("#player").css("bottom", player.y + "px");
     }
     if(player.speedY <= 0){
@@ -47,7 +48,6 @@ $(document).ready(function(){
           $("#player").css("bottom", $(this).css("bottom")+ "px");
           player.isFloor = true;
           player.speedY = 0;
-
         }
       });
 
@@ -63,14 +63,7 @@ $(document).ready(function(){
     }
   }
 function checkOnTile(tilesToCheck){
-
   var resultX = false;
-  // if(parseInt(tilesToCheck.css("bottom")) >= player.y - tilesToCheck.height()){
-  //   resultY = true;
-  // }
-  // else{
-  //   resultY = false;
-  // }
   if(player.x >= parseInt(tilesToCheck.css("left")) && player.x<= parseInt(tilesToCheck.css("left")) + tilesToCheck.width()){
     resultX = true;
   }
