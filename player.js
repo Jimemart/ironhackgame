@@ -1,8 +1,10 @@
-function myPlayer(x,y,speedY, speedX){
+function myPlayer(x,y,speedY, speedX, gravity){
   this.x = x;
   this.y = y;
   this.speedY = speedY;
   this.speedX = speedX;
+  this.isFloor = true;
+  this.gravity = gravity;
 }
 
 
@@ -27,4 +29,11 @@ myPlayer.prototype.moveLeft = function(){
   this.x -= this.speedX;
   $("#player").css("left", this.x + "px");
 }
+};
+
+myPlayer.prototype.moveUp = function(){
+  if(this.isFloor){
+    this.speedY = 30;
+    this.isFloor = false;
+  }
 };

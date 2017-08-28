@@ -6,8 +6,19 @@
   margin: 0 auto;
 }
 .me{
-  height:40px;
-  width:40px;
+  height:50px;
+  width:50px;
   background: purple;
   position: absolute;
+}
+.tile{
+  background: red;
+  width: 300px;
+  height: 20px;
+  position: absolute;
+  bottom: 138;
+}
+#floor{
+  bottom: 0;
+  width: 100%;
 }
