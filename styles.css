@@ -1,0 +1,13 @@
+#board{
+  background: lightblue;
+  height: 900px;
+  width: 800px;
+  position: relative;
+  margin: 0 auto;
+}
+.me{
+  height:40px;
+  width:40px;
+  background: purple;
+  position: absolute;
+}
