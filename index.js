@@ -3,16 +3,17 @@ var player;
 
 $(document).ready(function(){
 
-  $("#start").on("click",function(){
     tiles = new Tile();
     player = new Player(350,40,0,0,2);
     game = new Game();
 
     var myInterval = setInterval(function(){
       player.update();
+      if(game.gameOver){
+        game.restart();
+      }
     },30);
   });
-});
 
   $(document).keydown(function(e){
     if(e.keyCode === 38){

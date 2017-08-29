@@ -37,9 +37,10 @@ Player.prototype.update = function(){
       this.isFloor = false;
     this._goingUp();
     if(player.y >=450){
-
       tiles.tilesGoDown();
-
+    }
+    if(this.y <= 0){
+      game.gameOver = true;
     }
   }
   if(this.speedY <=0){
@@ -47,6 +48,12 @@ Player.prototype.update = function(){
     var that = this;
     tiles.alltiles.each(function(){
       if(tiles.checkOnTile(that, $(this))){
+        $(this).attr("data-value","stepped");
+        var theTile = this;
+        setTimeout(function(){
+          $(theTile).remove();
+        },4000);
+
         this.y = $(that.divPlayer).css("bottom");
         $(that.divPlayer).css("bottom", $(this).css("bottom")+ "px");
         that.isFloor = true;

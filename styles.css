@@ -18,11 +18,14 @@
   position: absolute;
 }
 .iniciales{
-  background: red;
+  background: green;
   width: 300px;
   height: 20px;
   position: absolute;
   bottom: 138;
+}
+.animate{
+  animation: shake 0.2s linear  infinite alternate;
 }
 #floor{
   bottom: 0;
@@ -43,4 +46,14 @@
 .final{
   bottom: 750;
   left: 200;
+}
+@keyframes shake{
+  0%{
+    left: 35px;
+    bottom: 151px;
+  }
+  100%{
+    left:44px;
+    bottom:149px;
+  }
 }

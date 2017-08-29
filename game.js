@@ -6,9 +6,14 @@ function Game(){
   this.keyJump = false;
   this.keyLeft  = false;
   this.keyRight = false;
+  this.gameOver = false;
 
 }
 
 Game.prototype.renderPlayer = function(){
   $("#board").append(player.createPlayer());
+};
+
+Game.prototype.restart = function(){
+  location.reload();
 };

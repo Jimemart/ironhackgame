@@ -32,12 +32,13 @@ Tile.prototype.tilesGoDown = function(){
 };
 
 Tile.prototype.createTile = function(){
-  var newTile = $("<div>").addClass("tile"); var screenWidth = game.height;
-  $(newTile).css("bottom", screenWidth + 70);
-  $(newTile).css("left", this.left[this._pickRandom(this.left)]);
-  $(newTile).css("width", this.width[this._pickRandom(this.width)]);
-  $("#board").append(newTile);
-  this._tileOut(newTile);
+  var screenWidth = game.height;
+  this.newTile = $("<div>").addClass("tile")
+      .css("bottom", screenWidth + 70)
+      .css("left", this.left[this._pickRandom(this.left)])
+      .css("width", this.width[this._pickRandom(this.width)]);
+  $("#board").append(this.newTile);
+  //this.setSelfDestroy(4);
   tiles.alltiles = $(".tile");
 };
 
@@ -45,8 +46,13 @@ Tile.prototype._pickRandom = function(arr){
   return Math.floor(Math.random()*arr.length);
 };
 
-Tile.prototype._tileOut = function(toDisappear){
+Tile.prototype.setSelfDestroy = function(n,removeMe){
   setTimeout(function(){
-    $(toDisappear).css("display","none");
-  },3000);
+    $(removeMe).remove();
+  },n * 1000);
 };
+// Tile.prototype._shakeTile = function(toShake){
+//   setTimeout(function(){
+//     $(toShake).addClass("animate");
+//   },1500);
+// };
