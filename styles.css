@@ -11,7 +11,13 @@
   background: purple;
   position: absolute;
 }
+
 .tile{
+  background: red;
+  height: 20px;
+  position: absolute;
+}
+.iniciales{
   background: red;
   width: 300px;
   height: 20px;
@@ -33,4 +39,8 @@
 .high{
   bottom: 552;
   left: 300;
+}
+.final{
+  bottom: 750;
+  left: 200;
 }

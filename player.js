@@ -25,6 +25,9 @@ Player.prototype.update = function(){
 }
   if(game.keyJump){
     if(this.isFloor){
+      if(this.y >= 300){
+          tiles.createTile();
+      }
     this.speedY = 30;
     this.isFloor = false;
 
@@ -33,8 +36,10 @@ Player.prototype.update = function(){
   if(!this.isFloor){
       this.isFloor = false;
     this._goingUp();
-    if(player.y >= 650){
+    if(player.y >=450){
+
       tiles.tilesGoDown();
+
     }
   }
   if(this.speedY <=0){

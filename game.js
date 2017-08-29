@@ -9,6 +9,6 @@ function Game(){
 
 }
 
-// Game.prototype.renderPlayer = function(){
-//   $("#board").append(player.createPlayer());
-// };
+Game.prototype.renderPlayer = function(){
+  $("#board").append(player.createPlayer());
+};
