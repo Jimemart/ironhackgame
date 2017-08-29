@@ -1,7 +1,9 @@
 function Tile(){
-  this.width = [300,200,150];
+  this.width = [300,200,100];
   this.alltiles = $(".tile");
-  this.left = [0, 100, 200, 300, 400];
+  this.left = [0, 100, 200, 300, 400,500];
+  this.speed = 10;
+  this.destroy = 0.7;
 }
 
 Tile.prototype.checkOnTile = function(player, tileToCheck){
@@ -24,9 +26,10 @@ Tile.prototype.checkOnTile = function(player, tileToCheck){
 
 
 Tile.prototype.tilesGoDown = function(){
+  var that = this;
   tiles.alltiles.each(function(tile){
 	var position = parseInt($(this).css("bottom"));
-	position -=10;
+	position -= that.speed;
 	$(this).css("bottom", position);
 });
 };
@@ -38,7 +41,6 @@ Tile.prototype.createTile = function(){
       .css("left", this.left[this._pickRandom(this.left)])
       .css("width", this.width[this._pickRandom(this.width)]);
   $("#board").append(this.newTile);
-  //this.setSelfDestroy(4);
   tiles.alltiles = $(".tile");
 };
 
@@ -49,10 +51,14 @@ Tile.prototype._pickRandom = function(arr){
 Tile.prototype.setSelfDestroy = function(n,removeMe){
   setTimeout(function(){
     $(removeMe).remove();
+
   },n * 1000);
+this.alltiles = $(" .tile");
 };
-// Tile.prototype._shakeTile = function(toShake){
-//   setTimeout(function(){
-//     $(toShake).addClass("animate");
-//   },1500);
-// };
+
+Tile.prototype.shakeTile = function(mytile){
+  setTimeout(function(){
+  $(mytile).addClass("animated bounce");
+},300);
+
+};

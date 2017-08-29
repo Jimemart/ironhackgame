@@ -27,7 +27,11 @@ Player.prototype.update = function(){
     if(this.isFloor){
       if(this.y >= 300){
           tiles.createTile();
+          game.score += 10;
       }
+    if(game.score >= 100){
+      game.dificult();
+    }
     this.speedY = 30;
     this.isFloor = false;
 
@@ -36,6 +40,7 @@ Player.prototype.update = function(){
   if(!this.isFloor){
       this.isFloor = false;
     this._goingUp();
+
     if(player.y >=450){
       tiles.tilesGoDown();
     }
@@ -48,20 +53,15 @@ Player.prototype.update = function(){
     var that = this;
     tiles.alltiles.each(function(){
       if(tiles.checkOnTile(that, $(this))){
-        $(this).attr("data-value","stepped");
         var theTile = this;
-        setTimeout(function(){
-          $(theTile).remove();
-        },4000);
-
-        this.y = $(that.divPlayer).css("bottom");
-        $(that.divPlayer).css("bottom", $(this).css("bottom")+ "px");
+        tiles.shakeTile(this);
+        tiles.setSelfDestroy(tiles.destroy,this);
         that.isFloor = true;
         that.speedY = 0;
       }
     });
   }
-
+game.updateScore();
 };
 
 Player.prototype._goingUp = function(){

@@ -17,3 +17,12 @@ Game.prototype.renderPlayer = function(){
 Game.prototype.restart = function(){
   location.reload();
 };
+Game.prototype.updateScore = function(){
+  $("#score").text(this.score);
+};
+Game.prototype.dificult = function(){
+  player.speedY = 40;
+  player.gravity = 3;
+  tiles.speed = 15;
+  tiles.destroy = 0.4;
+};
