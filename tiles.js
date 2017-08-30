@@ -37,9 +37,15 @@ Tile.prototype.tilesGoDown = function(){
 Tile.prototype.createTile = function(){
   var screenWidth = game.height;
   this.newTile = $("<div>").addClass("tile")
-      .css("bottom", screenWidth + 70)
+      .css("bottom", screenWidth)
       .css("left", this.left[this._pickRandom(this.left)])
       .css("width", this.width[this._pickRandom(this.width)]);
+  if(this.newTile.width() === 300){
+    $(this.newTile).css("background-image","url('img/long-platform.png')");
+  }
+  else if(this.newTile.width() === 200){
+    $(this.newTile).css("background-image","url('img/medium-platform.png')");
+  }
   $("#board").append(this.newTile);
   tiles.alltiles = $(".tile");
 };
@@ -61,4 +67,11 @@ Tile.prototype.shakeTile = function(mytile){
   $(mytile).addClass("animated bounce");
 },300);
 
+};
+
+Tile.prototype.checkHigher = function(){
+  var firstTile = tiles.alltiles[tiles.alltiles.length-1];
+  if(parseInt($(firstTile).css("bottom")) <= 350){
+    this.createTile();
+  }
 };

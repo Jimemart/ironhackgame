@@ -38,10 +38,11 @@ Player.prototype.update = function(){
   }
   }
   if(!this.isFloor){
+    $(this.divPlayer).addClass("jumping");
       this.isFloor = false;
     this._goingUp();
 
-    if(player.y >=450){
+    if(player.y >=350){
       tiles.tilesGoDown();
     }
     if(this.y <= 0){
@@ -54,6 +55,7 @@ Player.prototype.update = function(){
     tiles.alltiles.each(function(){
       if(tiles.checkOnTile(that, $(this))){
         var theTile = this;
+        $(that.divPlayer).removeClass("jumping");
         tiles.shakeTile(this);
         tiles.setSelfDestroy(tiles.destroy,this);
         that.isFloor = true;
@@ -61,7 +63,9 @@ Player.prototype.update = function(){
       }
     });
   }
+tiles.checkHigher();
 game.updateScore();
+// console.log(this.y);
 };
 
 Player.prototype._goingUp = function(){
