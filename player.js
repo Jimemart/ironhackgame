@@ -1,6 +1,7 @@
 function Player(x,y,speedY, speedX, gravity){
   this.x = x;
   this.y = y;
+
   this.speedY = speedY;
   this.speedX = speedX;
   this.isFloor = true;
@@ -27,12 +28,13 @@ Player.prototype.update = function(){
     if(this.isFloor){
       if(this.y >= 300){
           tiles.createTile();
+
           game.score += 10;
       }
-    if(game.score >= 100){
-      game.dificult();
+    if(game.score >= 50 && game.score % 50 == 0){
+      bonus.createObject();
     }
-    this.speedY = 30;
+    this.speedY = 28;
     this.isFloor = false;
 
   }
@@ -42,12 +44,21 @@ Player.prototype.update = function(){
       this.isFloor = false;
     this._goingUp();
 
-    if(player.y >=350){
+
+    if(player.y >=300 && this.speedY >= 0){
       tiles.tilesGoDown();
+      bonus.bonusGoDown();
+      game.paralax();
     }
     if(this.y <= 0){
+      if(game.lives < 1){
       game.gameOver = true;
     }
+    else{
+      game.rescue();
+    }
+    }
+
   }
   if(this.speedY <=0){
     this.isFloor = false;
@@ -56,20 +67,20 @@ Player.prototype.update = function(){
       if(tiles.checkOnTile(that, $(this))){
         var theTile = this;
         $(that.divPlayer).removeClass("jumping");
-        tiles.shakeTile(this);
-        tiles.setSelfDestroy(tiles.destroy,this);
+        // tiles.shakeTile(this);
+        // tiles.setSelfDestroy(tiles.destroy,this);
         that.isFloor = true;
         that.speedY = 0;
       }
     });
   }
+bonus.checkCollision();
 tiles.checkHigher();
 game.updateScore();
-// console.log(this.y);
+
 };
 
 Player.prototype._goingUp = function(){
-  //this.y = this.divPlayer.css("bottom");
   this.speedY -= this.gravity;
   this.y += this.speedY;
   this.divPlayer.css("bottom", this.y +"px");

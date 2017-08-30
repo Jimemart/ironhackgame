@@ -10,15 +10,16 @@
 .me{
   height:60px;
   width:60px;
-  background: purple;
+  background: url("img/giphy.gif");
+  background-size: contain;
   position: absolute;
+
 }
 
 .tile{
-  background: red;
-  height: 30px;
+  height: 40px;
   position: absolute;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: top;
 }
@@ -38,6 +39,8 @@
 #floor{
   bottom: 0;
   width: 100%;
+  background-image: url("img/long-platform.png");
+  background-size: cover;
 }
 .right{
   bottom: 276;
@@ -61,7 +64,25 @@
   background-repeat: no-repeat;
 }
 .jetpack{
-  width: 20px;
-  height: 20px;
-  background: yellow;
+  width: 40px;
+  height: 40px;
+  background-image: url("img/jetpack.jpg");
+  background-size: contain;
+  position: absolute;
+}
+.heart{
+  width: 40px;
+  height: 40px;
+  background-image: url("img/heart.png");
+  background-size: contain;
+  position: absolute;
+  background-repeat: no-repeat;
+}
+.mylife1, .mylife2, .mylife3{
+  width: 40px;
+  height: 40px;
+  background-image: url("img/heart.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display:none;
 }

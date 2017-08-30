@@ -2,7 +2,7 @@ function Tile(){
   this.width = [300,200,100];
   this.alltiles = $(".tile");
   this.left = [0, 100, 200, 300, 400,500];
-  this.speed = 10;
+  this.speed = 15;
   this.destroy = 0.7;
 }
 
@@ -35,9 +35,9 @@ Tile.prototype.tilesGoDown = function(){
 };
 
 Tile.prototype.createTile = function(){
-  var screenWidth = game.height;
+  var screenHeight = game.height;
   this.newTile = $("<div>").addClass("tile")
-      .css("bottom", screenWidth)
+      .css("bottom", screenHeight-10)
       .css("left", this.left[this._pickRandom(this.left)])
       .css("width", this.width[this._pickRandom(this.width)]);
   if(this.newTile.width() === 300){
@@ -45,6 +45,9 @@ Tile.prototype.createTile = function(){
   }
   else if(this.newTile.width() === 200){
     $(this.newTile).css("background-image","url('img/medium-platform.png')");
+  }
+  else{
+    $(this.newTile).css("background-image","url('img/small-platform.png')");
   }
   $("#board").append(this.newTile);
   tiles.alltiles = $(".tile");
@@ -59,7 +62,7 @@ Tile.prototype.setSelfDestroy = function(n,removeMe){
     $(removeMe).remove();
 
   },n * 1000);
-this.alltiles = $(" .tile");
+this.alltiles = $(".tile");
 };
 
 Tile.prototype.shakeTile = function(mytile){
@@ -71,7 +74,7 @@ Tile.prototype.shakeTile = function(mytile){
 
 Tile.prototype.checkHigher = function(){
   var firstTile = tiles.alltiles[tiles.alltiles.length-1];
-  if(parseInt($(firstTile).css("bottom")) <= 350){
+  if(parseInt($(firstTile).css("bottom")) <= 450){
     this.createTile();
   }
 };

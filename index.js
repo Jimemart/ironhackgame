@@ -6,6 +6,7 @@ $(document).ready(function(){
     tiles = new Tile();
     player = new Player(350,40,0,0,2);
     game = new Game();
+    bonus = new BonusObjects();
 
     var myInterval = setInterval(function(){
       player.update();
