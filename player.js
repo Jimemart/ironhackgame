@@ -1,6 +1,7 @@
 function Player(x, y, speedY, speedX, gravity) {
   this.x = x;
   this.y = y;
+  this.background = "";
   this.poisoned = false;
   this.speedY = speedY;
   this.speedX = speedX;
@@ -85,11 +86,38 @@ Player.prototype.update = function() {
   bonus.checkCollision();
   tiles.checkHigher();
   game.updateScore();
-
+  this.backgrounds();
 };
 
 Player.prototype._goingUp = function() {
   this.speedY -= this.gravity;
   this.y += this.speedY;
   this.divPlayer.css("bottom", this.y + "px");
+};
+Player.prototype.backgrounds = function(){
+  if(game.keyRight && !this.poisoned && this.isFloor){
+    this.background = "url('img/goat-right.gif')";
+  }
+  if(game.keyRight && this.poisoned && this.isFloor){
+    this.background = "url('img/goat-right-poisoned.gif')";
+  }
+  if(game.keyRight && this.poisoned && !this.isFloor){
+    this.background = "url('img/goat-jump-2-psico.png')";
+  }
+  if(game.keyRight && !this.poisoned && !this.isFloor){
+    this.background = "url('img/goat-jump.png')";
+  }
+  if(game.keyLeft && !this.poisoned && this.isFloor){
+    this.background = "url('img/goat-right.gif')";
+  }
+  if(game.keyLeft && this.poisoned && this.isFloor){
+    this.background = "url('img/goat-right-poisoned.gif')";
+  }
+  if(game.keyLeft && this.poisoned && !this.isFloor){
+    this.background = "url('img/goat-jump-psico.png')";
+  }
+  if(game.keyLeft && !this.poisoned && !this.isFloor){
+    this.background = "url('img/goat-jump.png')";
+  }
+  $(this.divPlayer).css("background-image",this.background);
 };

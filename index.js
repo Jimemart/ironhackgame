@@ -18,6 +18,7 @@ $(document).ready(function() {
 $(document).keydown(function(e) {
   if (e.keyCode === 38) {
     game.keyJump = true;
+
   }
   if (e.keyCode === 39) {
     game.keyRight = true;

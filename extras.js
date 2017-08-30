@@ -68,7 +68,6 @@ BonusObjects.prototype.checkCollision = function(){
 };
 BonusObjects.prototype.potionEffect = function(){
   player.poisoned = true;
-  $("#player").css("background","red");
   setTimeout(function(){
     player.poisoned = false;
     $("#player").css("background","url('img/goat-jump.png')");

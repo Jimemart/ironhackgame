@@ -13,6 +13,7 @@
   background-image: url("img/goat-jump.png");
   background-size: contain;
   position: absolute;
+  background-repeat: no-repeat;
 
 }
 
