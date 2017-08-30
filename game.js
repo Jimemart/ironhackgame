@@ -35,11 +35,20 @@ Game.prototype.paralax = function(){
   $("#board").css("background-position-y", posBackground);
 };
 Game.prototype.rescue = function(){
-  player.y = 700;
-  player.x = 150;
+  var placeToRespawn = tiles.alltiles[tiles.alltiles.length-1];
+  var heightToRespawn = parseInt($(placeToRespawn).css("bottom")) + 50;
+  var xToRespawn = parseInt($(placeToRespawn).css("left"))+10;
   game.lives -= 1;
   var toDelete = this.hearts[this.hearts.length-1];
   $(toDelete).css("display","none");
   $(toDelete).removeClass("life");
+  player.y = heightToRespawn;
+  player.x = xToRespawn;
 
+
+};
+Game.prototype.enviromentalMovement = function(){
+  tiles.tilesGoDown();
+  bonus.bonusGoDown();
+  game.paralax();
 };

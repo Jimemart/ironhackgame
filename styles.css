@@ -8,9 +8,9 @@
   margin: 0 auto;
 }
 .me{
-  height:60px;
-  width:60px;
-  background: url("img/giphy.gif");
+  height:80px;
+  width:80px;
+  background-image: url("img/goat-jump.png");
   background-size: contain;
   position: absolute;
 
@@ -85,4 +85,12 @@
   background-size: contain;
   background-repeat: no-repeat;
   display:none;
+}
+.potion{
+  width: 50px;
+  height: 50px;
+  background-image: url("img/potion.png");
+  background-size: contain;
+  position: absolute;
+  background-repeat: no-repeat;
 }

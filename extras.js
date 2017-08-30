@@ -1,7 +1,5 @@
-
-
 function BonusObjects(){
-  this.type = ["jetpack", "heart"];
+  this.type = ["jetpack", "heart", "potion"];
   this.maxLeft = $("#board").width()-40;
   this.allExtras = $(".extra");
   this.speed = 12;
@@ -49,8 +47,10 @@ BonusObjects.prototype.jetpackEffect = function(){
 BonusObjects.prototype.checkCollision = function(){
   var collide = $(".me").collision(".jetpack");
     if(collide[0]){
+
       $(collide).css("display","none");
       this.jetpackEffect();
+
       setTimeout(function(){
         bonus.resetToNormal();
       },2000);
@@ -60,8 +60,22 @@ BonusObjects.prototype.checkCollision = function(){
     $(collideHearts).css("display","none");
     this.heartsEffect();
   }
+  var collidePotion = $(".me").collision(".potion");
+  if(collidePotion[0]){
+    $(collidePotion).css("display","none");
+    this.potionEffect();
+  }
+};
+BonusObjects.prototype.potionEffect = function(){
+  player.poisoned = true;
+  $("#player").css("background","red");
+  setTimeout(function(){
+    player.poisoned = false;
+    $("#player").css("background","url('img/goat-jump.png')");
+  },5000);
 };
 BonusObjects.prototype.heartsEffect = function(){
+  if(game.lives <3)
   game.lives +=1;
   switch(game.lives){
     case 1:
@@ -84,4 +98,11 @@ BonusObjects.prototype.resetToNormal = function(){
     player.gravity = 2;
     tiles.speed = 13;
     game.backgroundSpeed = 2;
+};
+BonusObjects.prototype.destroyUs = function(){
+  this.allExtras.each(function(){
+    if(parseInt($(this).css("bottom"))<=0){
+      $(this).remove();
+    }
+  });
 };

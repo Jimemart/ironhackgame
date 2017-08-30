@@ -17,7 +17,7 @@ Tile.prototype.checkOnTile = function(player, tileToCheck){
     var ps = -player.speedY;
     var tileH = tileToCheck.height();
     var tileY = parseInt(tileToCheck.css("bottom"));
-    var upperLimit = tileY + tileH + ps;
+    var upperLimit = tileY + tileH + ps+5;
     var lowerLimit = tileY + tileH;
     resultY = (pY >= lowerLimit) && (pY <= upperLimit);
   }
@@ -60,7 +60,6 @@ Tile.prototype._pickRandom = function(arr){
 Tile.prototype.setSelfDestroy = function(n,removeMe){
   setTimeout(function(){
     $(removeMe).remove();
-
   },n * 1000);
 this.alltiles = $(".tile");
 };
@@ -68,6 +67,7 @@ this.alltiles = $(".tile");
 Tile.prototype.shakeTile = function(mytile){
   setTimeout(function(){
   $(mytile).addClass("animated bounce");
+  $("#floor").removeClass("animated bounce");
 },300);
 
 };
@@ -77,4 +77,12 @@ Tile.prototype.checkHigher = function(){
   if(parseInt($(firstTile).css("bottom")) <= 450){
     this.createTile();
   }
+};
+
+Tile.prototype.destroyMe = function(){
+  this.alltiles.each(function(){
+    if(parseInt($(this).css("bottom")) < 0){
+      $(this).remove();
+    }
+  });
 };
