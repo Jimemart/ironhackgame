@@ -16,7 +16,10 @@
   background-repeat: no-repeat;
 
 }
-
+.rock{
+  position: absolute;
+  height: 30px;
+}
 .tile{
   height: 40px;
   position: absolute;

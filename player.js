@@ -99,22 +99,22 @@ Player.prototype.backgrounds = function(){
     this.background = "url('img/goat-right.gif')";
   }
   if(game.keyRight && this.poisoned && this.isFloor){
-    this.background = "url('img/goat-right-poisoned.gif')";
+    this.background = "url('img/goat-left-poisoned.gif')";
   }
   if(game.keyRight && this.poisoned && !this.isFloor){
-    this.background = "url('img/goat-jump-2-psico.png')";
+    this.background = "url('img/goat-jump-psico.png')";
   }
   if(game.keyRight && !this.poisoned && !this.isFloor){
     this.background = "url('img/goat-jump.png')";
   }
   if(game.keyLeft && !this.poisoned && this.isFloor){
-    this.background = "url('img/goat-right.gif')";
+    this.background = "url('img/goat-left.gif')";
   }
   if(game.keyLeft && this.poisoned && this.isFloor){
     this.background = "url('img/goat-right-poisoned.gif')";
   }
   if(game.keyLeft && this.poisoned && !this.isFloor){
-    this.background = "url('img/goat-jump-psico.png')";
+    this.background = "url('img/goat-jump-2-psico.png')";
   }
   if(game.keyLeft && !this.poisoned && !this.isFloor){
     this.background = "url('img/goat-jump.png')";
