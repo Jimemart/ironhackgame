@@ -83,10 +83,10 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
       if (tiles.checkOnTile(that, $(this))) {
         var theTile = this;
         $(that.divPlayer).removeClass("jumping");
-        $(this).addClass("respawnMe");
-        game.Torespawn = $(".respawnMe");
-        // tiles.shakeTile(this);
-        // tiles.setSelfDestroy(tiles.destroy,this);
+        if(!$(this).hasClass("stay")){
+        tiles.shakeTile(this);
+        tiles.setSelfDestroy(tiles.destroy,this);
+      }
         that.isFloor = true;
         that.speedY = 0;
       }
@@ -101,6 +101,7 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
   this.backgrounds(game);
   rocks.rocksGoDown();
   rocks.disappear();
+  game.upDateScreenTiles();
 };
 
 Player.prototype._goingUp = function() {
@@ -136,7 +137,7 @@ Player.prototype.backgrounds = function(game){
   $(this.divPlayer).css("background-image",this.background);
 };
 Player.prototype.specialJumpRight = function(game){
-  if(game.keyRight){
+  if(game.keyRight && !this.poisoned){
     this.speedY = 40;
     $("#player").addClass("spin");
     setTimeout(function(){
@@ -145,7 +146,7 @@ Player.prototype.specialJumpRight = function(game){
   }
 };
 Player.prototype.specialJumpLeft = function(game){
-  if(game.keyLeft){
+  if(game.keyLeft && !this.poisoned){
     this.speedY = 40;
     $("#player").addClass("spin");
     setTimeout(function(){

@@ -57,11 +57,12 @@ Tile.prototype._pickRandom = function(arr){
   return Math.floor(Math.random()*arr.length);
 };
 
-Tile.prototype.setSelfDestroy = function(n,removeMe){
+Tile.prototype.setSelfDestroy = function(n,removeMe, game){
   setTimeout(function(){
     $(removeMe).remove();
   },n * 1000);
 this.alltiles = $(".tile");
+
 };
 
 Tile.prototype.shakeTile = function(mytile){

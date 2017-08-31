@@ -11,6 +11,7 @@ function Game(){
   this.lives = 3;
   this.hearts = $(".life");
 }
+
 Game.prototype.start = function(){
   tiles = new Tile();
   player = new Player(350, 40, 0, 0, 2);
@@ -18,7 +19,13 @@ Game.prototype.start = function(){
   bonus = new BonusObjects();
   rocks = new Rocks();
   this.createEnviroment();
-
+  var that = this;
+  this.myInterval = setInterval(function() {
+    player.update(game,tiles,rocks,bonus);
+    if (that.gameOver) {
+      that.restart();
+    }
+  }, 30);
 
   // this.renderPlayer();
 };
@@ -27,7 +34,7 @@ Game.prototype.renderPlayer = function(){
 };
 
 Game.prototype.restart = function(){
-  location.reload();
+    location.reload();
 };
 Game.prototype.updateScore = function(){
   $("#score").text(this.score);
@@ -45,7 +52,7 @@ Game.prototype.paralax = function(){
   $("#board").css("background-position-y", posBackground);
 };
 Game.prototype.rescue = function(){
-  var placeToRespawn = game.Torespawn[game.Torespawn.length-1];
+  var placeToRespawn = this.screenTiles[0];
   var heightToRespawn = parseInt($(placeToRespawn).css("bottom")) + 50;
   var xToRespawn = parseInt($(placeToRespawn).css("left"))+10;
   game.lives -= 1;
@@ -91,4 +98,7 @@ Game.prototype.createTiles = function(){
   var fourthTile = $("<div>").addClass("iniciales tile right");
   // var floor = $("<div>").attr("id", "floor").addClass("tile");
   $("#board").append(oneTile).append(secondTile).append(thirdTile).append(fourthTile);
+};
+Game.prototype.upDateScreenTiles = function(){
+  this.screenTiles = $(".tile");
 };
