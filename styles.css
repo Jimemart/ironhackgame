@@ -1,3 +1,6 @@
+body{
+  background: #b6f279
+}
 #board{
   background: url("img/fondo.png");
   background-size: 200%;
@@ -100,6 +103,30 @@
   background-size: contain;
   position: absolute;
   background-repeat: no-repeat;
+}
+.yourscore{
+  position: absolute;
+  width: 300px;
+  height: 350px;
+  top: 200px;
+  left: 250px;
+  border-radius: 5%;
+  background: #4ad9d9;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  line-height: 20px;
+font-family: 'Gochi Hand', cursive;
+
+}
+.again{
+  padding: 20px;
+  border-radius: 5%;
+  border: 5px solid #038c5a;
+  background: #b6f279;
+  font-size: 35px;
+  font-family: 'Gochi Hand', cursive;
+  color: #038c5a;
 }
 @keyframes spin{
   0%{

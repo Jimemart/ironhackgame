@@ -1,6 +1,6 @@
 function Rocks(){
   this.width = [100,200];
-  this.speed = 15;
+  this.speed = 20;
   this.left = [0, 100, 200, 300, 400,500];
   this.maxHeight = $("#board").height();
   this.allRocks = $(".rock");
@@ -46,14 +46,17 @@ Rocks.prototype.disappear = function(){
     }
   });
 };
-Rocks.prototype.checkCollision = function(){
+Rocks.prototype.checkCollision = function(game, invencible){
   var rockCollision = $(".me").collision(".rock");
   if(rockCollision[0]){
-    if(game.lives > 0){
-      game.rescue();
+    if(game.lives >0){
+      if(!player.invencible){
+
+      game.rescue(player);
     }
-    else{
-      game.restart();
+    }
+    if(game.lives<1){
+      game.gameOver = true;
     }
   }
 };

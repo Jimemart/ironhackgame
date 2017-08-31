@@ -1,11 +1,14 @@
 var player;
 
 $(document).ready(function() {
+
 $("#start").on("click",function(){
   game = new Game();
   game.start();
-
+  $("#start").css("display","none");
+  // game.startMusic();
 });
+
 
 
 

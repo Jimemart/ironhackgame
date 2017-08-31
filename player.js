@@ -48,6 +48,10 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
       if(game.score >0 && game.score % 30 == 0 && this.y < 600){
         rocks.createRock();
       }
+      if(game.score > 200){
+        game.dificult();
+      }
+
       this.speedY = 28;
       this.isFloor = false;
     }
@@ -65,7 +69,8 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
       if (game.lives < 1) {
         game.gameOver = true;
       } else {
-        game.rescue();
+        game.rescue(player);
+        this.goatDie();
       }
     }
     if(this.x<= 0){
@@ -84,15 +89,15 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
         var theTile = this;
         $(that.divPlayer).removeClass("jumping");
         if(!$(this).hasClass("stay")){
-        tiles.shakeTile(this);
-        tiles.setSelfDestroy(tiles.destroy,this);
+        // tiles.shakeTile(this);
+        // tiles.setSelfDestroy(tiles.destroy,this);
       }
         that.isFloor = true;
         that.speedY = 0;
       }
     });
   }
-  rocks.checkCollision();
+  rocks.checkCollision(game, player);
   bonus.destroyUs();
   tiles.destroyMe();
   bonus.checkCollision();
@@ -105,9 +110,13 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
 };
 
 Player.prototype._goingUp = function() {
+
   this.speedY -= this.gravity;
+
   this.y += this.speedY;
+  if(this.y < $("#board").height()){
   this.divPlayer.css("bottom", this.y + "px");
+}
 };
 Player.prototype.backgrounds = function(game){
   if(game.keyRight && !this.poisoned && this.isFloor){
@@ -138,7 +147,7 @@ Player.prototype.backgrounds = function(game){
 };
 Player.prototype.specialJumpRight = function(game){
   if(game.keyRight && !this.poisoned){
-    this.speedY = 40;
+    this.speedY = 30;
     $("#player").addClass("spin");
     setTimeout(function(){
       $("#player").removeClass("spin");
@@ -147,10 +156,15 @@ Player.prototype.specialJumpRight = function(game){
 };
 Player.prototype.specialJumpLeft = function(game){
   if(game.keyLeft && !this.poisoned){
-    this.speedY = 40;
+    this.speedY = 30;
     $("#player").addClass("spin");
     setTimeout(function(){
       $("#player").removeClass("spin");
     },1000);
   }
+};
+Player.prototype.goatDie = function(){
+  var goat = document.createElement("audio");
+  goat.src = "music/goat.flac";
+  goat.play();
 };

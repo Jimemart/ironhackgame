@@ -23,16 +23,35 @@ Game.prototype.start = function(){
   this.myInterval = setInterval(function() {
     player.update(game,tiles,rocks,bonus);
     if (that.gameOver) {
-      that.restart();
+      that.showScore();
+      $("#player").remove();
     }
   }, 30);
 
   // this.renderPlayer();
 };
+Game.prototype.startMusic = function(){
+  var audio = document.createElement("audio");
+  audio.src = "music/bso.ogg";
+  audio.play();
+};
 Game.prototype.renderPlayer = function(){
   $("#board").append(player.createPlayer());
 };
-
+Game.prototype.showScore = function(){
+  clearInterval(this.myInterval);
+  var audio = document.createElement("audio");
+  audio.src = "music/goat-die.flac";
+  audio.play();
+  var divScore = $("<div>").addClass("yourscore");
+  var firstText = $("<h2>").text("You've got");
+  var secondText = $("<h2>").text(this.score);
+  var thirdText = $("<h2>").text("points");
+  var butt = $("<button>").addClass("again").text("TRY AGAIN").attr("id","tryAgain");
+  butt.on("click",function(){this.restart();});
+  $(divScore).append(firstText).append(secondText).append(thirdText).append(butt);
+  $("#board").append(divScore);
+};
 Game.prototype.restart = function(){
     location.reload();
 };
@@ -51,19 +70,41 @@ Game.prototype.paralax = function(){
   posBackground += this.backgroundSpeed;
   $("#board").css("background-position-y", posBackground);
 };
-Game.prototype.rescue = function(){
-  var placeToRespawn = this.screenTiles[0];
-  var heightToRespawn = parseInt($(placeToRespawn).css("bottom")) + 50;
-  var xToRespawn = parseInt($(placeToRespawn).css("left"))+10;
-  game.lives -= 1;
+Game.prototype.rescue = function(player){
+    this.minusOne();
+  if(this.screenTiles.length > 0){
+
+  this.respawn(player);
+
+  this.playerInvencible(player);
+  console.log(this.lives);
+}
+else{
+  this.gameOver = true;
+}
+};
+Game.prototype.minusOne = function(){
+  this.lives -= 1;
   var toDelete = this.hearts[this.hearts.length-1];
   $(toDelete).css("display","none");
   $(toDelete).removeClass("life");
+
+  this.hearts = $(".life");
+};
+Game.prototype.respawn = function(player){
+  var placeToRespawn = this.screenTiles[0];
+  var heightToRespawn = parseInt($(placeToRespawn).css("bottom")) + 50;
+  var xToRespawn = parseInt($(placeToRespawn).css("left"))+10;
   player.y = heightToRespawn;
   player.x = xToRespawn;
-  this.hearts = $(".life");
-
-
+};
+Game.prototype.playerInvencible = function(player){
+  player.invencible = true;
+  console.log(player.invencible);
+  setTimeout(function(){
+    player.invencible = false;
+    console.log(player.invencible);
+  },2000);
 };
 Game.prototype.enviromentalMovement = function(){
   tiles.tilesGoDown();
