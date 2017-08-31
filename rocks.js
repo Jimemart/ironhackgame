@@ -1,6 +1,6 @@
 function Rocks(){
   this.width = [100,200];
-  this.speed = 20;
+  this.speed = 15;
   this.left = [0, 100, 200, 300, 400,500];
   this.maxHeight = $("#board").height();
   this.allRocks = $(".rock");

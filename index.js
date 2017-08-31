@@ -4,9 +4,8 @@ $(document).ready(function() {
 $("#start").on("click",function(){
   game = new Game();
   game.start();
-
   var myInterval = setInterval(function() {
-    player.update();
+    player.update(game,tiles,rocks,bonus);
     if (game.gameOver) {
       game.restart();
     }

@@ -16,6 +16,9 @@
   background-repeat: no-repeat;
 
 }
+.spin{
+  animation: spin 0.5s infinite linear;
+}
 .rock{
   position: absolute;
   height: 40px;
@@ -39,14 +42,12 @@
   position: absolute;
   bottom: 138;
 }
-.animate{
-  animation: shake 0.2s linear  infinite alternate;
-}
 #floor{
   bottom: 0;
   width: 100%;
   background-image: url("img/long-platform.png");
   background-size: cover;
+
 }
 .right{
   bottom: 276;
@@ -90,7 +91,7 @@
   background-image: url("img/heart.png");
   background-size: contain;
   background-repeat: no-repeat;
-  display:none;
+  display: inline-block;
 }
 .potion{
   width: 50px;
@@ -99,4 +100,12 @@
   background-size: contain;
   position: absolute;
   background-repeat: no-repeat;
+}
+@keyframes spin{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }

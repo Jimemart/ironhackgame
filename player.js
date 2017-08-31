@@ -16,7 +16,7 @@ function Player(x, y, speedY, speedX, gravity) {
 }
 
 
-Player.prototype.update = function() {
+Player.prototype.update = function(game,tiles,rocks,bonus) {
 
   if (game.keyRight) {
     if (!this.poisoned) {
@@ -33,7 +33,7 @@ Player.prototype.update = function() {
     }
   }
   this.x += this.speedX;
-  if (this.x < $("#board").width() && this.x > 0) {
+  if (this.x < $("#board").width()-50 && this.x > 0) {
     $(this.divPlayer).css("left", this.x);
   }
   if (game.keyJump) {
@@ -45,7 +45,7 @@ Player.prototype.update = function() {
       if (game.score >= 50 && game.score % 50 == 0) {
         bonus.createObject();
       }
-      if(game.score >0 &&game.score % 30 == 0){
+      if(game.score >0 && game.score % 30 == 0 && this.y < 600){
         rocks.createRock();
       }
       this.speedY = 28;
@@ -68,6 +68,12 @@ Player.prototype.update = function() {
         game.rescue();
       }
     }
+    if(this.x<= 0){
+      this.specialJumpRight(game);
+    }
+    if(this.x > $("#board").width()-70){
+      this.specialJumpLeft(game);
+    }
 
   }
   if (this.speedY <= 0) {
@@ -77,8 +83,10 @@ Player.prototype.update = function() {
       if (tiles.checkOnTile(that, $(this))) {
         var theTile = this;
         $(that.divPlayer).removeClass("jumping");
-        tiles.shakeTile(this);
-        tiles.setSelfDestroy(tiles.destroy,this);
+        $(this).addClass("respawnMe");
+        game.Torespawn = $(".respawnMe");
+        // tiles.shakeTile(this);
+        // tiles.setSelfDestroy(tiles.destroy,this);
         that.isFloor = true;
         that.speedY = 0;
       }
@@ -90,7 +98,7 @@ Player.prototype.update = function() {
   bonus.checkCollision();
   tiles.checkHigher();
   game.updateScore();
-  this.backgrounds();
+  this.backgrounds(game);
   rocks.rocksGoDown();
   rocks.disappear();
 };
@@ -100,7 +108,7 @@ Player.prototype._goingUp = function() {
   this.y += this.speedY;
   this.divPlayer.css("bottom", this.y + "px");
 };
-Player.prototype.backgrounds = function(){
+Player.prototype.backgrounds = function(game){
   if(game.keyRight && !this.poisoned && this.isFloor){
     this.background = "url('img/goat-right.gif')";
   }
@@ -126,4 +134,22 @@ Player.prototype.backgrounds = function(){
     this.background = "url('img/goat-jump.png')";
   }
   $(this.divPlayer).css("background-image",this.background);
+};
+Player.prototype.specialJumpRight = function(game){
+  if(game.keyRight){
+    this.speedY = 40;
+    $("#player").addClass("spin");
+    setTimeout(function(){
+      $("#player").removeClass("spin");
+    },1000);
+  }
+};
+Player.prototype.specialJumpLeft = function(game){
+  if(game.keyLeft){
+    this.speedY = 40;
+    $("#player").addClass("spin");
+    setTimeout(function(){
+      $("#player").removeClass("spin");
+    },1000);
+  }
 };

@@ -8,7 +8,7 @@ function Game(){
   this.keyRight = false;
   this.gameOver = false;
   this.backgroundSpeed = 2;
-  this.lives = 0;
+  this.lives = 3;
   this.hearts = $(".life");
 }
 Game.prototype.start = function(){
@@ -17,6 +17,9 @@ Game.prototype.start = function(){
 
   bonus = new BonusObjects();
   rocks = new Rocks();
+  this.createEnviroment();
+
+
   // this.renderPlayer();
 };
 Game.prototype.renderPlayer = function(){
@@ -42,7 +45,7 @@ Game.prototype.paralax = function(){
   $("#board").css("background-position-y", posBackground);
 };
 Game.prototype.rescue = function(){
-  var placeToRespawn = tiles.alltiles[tiles.alltiles.length-1];
+  var placeToRespawn = game.Torespawn[game.Torespawn.length-1];
   var heightToRespawn = parseInt($(placeToRespawn).css("bottom")) + 50;
   var xToRespawn = parseInt($(placeToRespawn).css("left"))+10;
   game.lives -= 1;
@@ -51,6 +54,7 @@ Game.prototype.rescue = function(){
   $(toDelete).removeClass("life");
   player.y = heightToRespawn;
   player.x = xToRespawn;
+  this.hearts = $(".life");
 
 
 };
@@ -58,4 +62,33 @@ Game.prototype.enviromentalMovement = function(){
   tiles.tilesGoDown();
   bonus.bonusGoDown();
   game.paralax();
+};
+Game.prototype.createEnviroment = function(){
+  this.createLives();
+  this.createScore();
+  this.createTiles();
+
+};
+Game.prototype.createLives = function(){
+  var life = $("<div>").attr("id","lifestore");
+  var mylife1 = $("<div>").addClass("mylife1 life");
+  var mylife2 = $("<div>").addClass("mylife2 life");
+  var mylife3 = $("<div>").addClass("mylife3 life");
+  $(life).append(mylife1).append(mylife2).append(mylife3);
+  $("#game").append(life);
+  this.hearts = $(".life");
+
+};
+Game.prototype.createScore = function(){
+  var score = $("<div>").attr("id", "score");
+  $("#board").append(score);
+};
+Game.prototype.createTiles = function(){
+
+  var oneTile = $("<div>").addClass("iniciales tile final");
+  var secondTile = $("<div>").addClass("iniciales tile high");
+  var thirdTile = $("<div>").addClass("iniciales tile ");
+  var fourthTile = $("<div>").addClass("iniciales tile right");
+  // var floor = $("<div>").attr("id", "floor").addClass("tile");
+  $("#board").append(oneTile).append(secondTile).append(thirdTile).append(fourthTile);
 };
