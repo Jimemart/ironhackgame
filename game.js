@@ -11,7 +11,14 @@ function Game(){
   this.lives = 0;
   this.hearts = $(".life");
 }
+Game.prototype.start = function(){
+  tiles = new Tile();
+  player = new Player(350, 40, 0, 0, 2);
 
+  bonus = new BonusObjects();
+  rocks = new Rocks();
+  // this.renderPlayer();
+};
 Game.prototype.renderPlayer = function(){
   $("#board").append(player.createPlayer());
 };

@@ -27,7 +27,7 @@ Tile.prototype.checkOnTile = function(player, tileToCheck){
 
 Tile.prototype.tilesGoDown = function(){
   var that = this;
-  tiles.alltiles.each(function(tile){
+  tiles.alltiles.each(function(){
 	var position = parseInt($(this).css("bottom"));
 	position -= that.speed;
 	$(this).css("bottom", position);

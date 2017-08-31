@@ -45,6 +45,9 @@ Player.prototype.update = function() {
       if (game.score >= 50 && game.score % 50 == 0) {
         bonus.createObject();
       }
+      if(game.score >0 &&game.score % 30 == 0){
+        rocks.createRock();
+      }
       this.speedY = 28;
       this.isFloor = false;
     }
@@ -74,19 +77,22 @@ Player.prototype.update = function() {
       if (tiles.checkOnTile(that, $(this))) {
         var theTile = this;
         $(that.divPlayer).removeClass("jumping");
-        // tiles.shakeTile(this);
-        // tiles.setSelfDestroy(tiles.destroy,this);
+        tiles.shakeTile(this);
+        tiles.setSelfDestroy(tiles.destroy,this);
         that.isFloor = true;
         that.speedY = 0;
       }
     });
   }
+  rocks.checkCollision();
   bonus.destroyUs();
   tiles.destroyMe();
   bonus.checkCollision();
   tiles.checkHigher();
   game.updateScore();
   this.backgrounds();
+  rocks.rocksGoDown();
+  rocks.disappear();
 };
 
 Player.prototype._goingUp = function() {

@@ -1,11 +1,9 @@
 var player;
 
 $(document).ready(function() {
-
-  tiles = new Tile();
-  player = new Player(350, 40, 0, 0, 2);
+$("#start").on("click",function(){
   game = new Game();
-  bonus = new BonusObjects();
+  game.start();
 
   var myInterval = setInterval(function() {
     player.update();
@@ -15,10 +13,13 @@ $(document).ready(function() {
   }, 30);
 });
 
+
+
+});
+
 $(document).keydown(function(e) {
   if (e.keyCode === 38) {
     game.keyJump = true;
-
   }
   if (e.keyCode === 39) {
     game.keyRight = true;

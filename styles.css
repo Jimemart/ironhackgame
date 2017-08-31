@@ -18,7 +18,9 @@
 }
 .rock{
   position: absolute;
-  height: 30px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .tile{
   height: 40px;

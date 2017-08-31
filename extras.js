@@ -70,7 +70,7 @@ BonusObjects.prototype.potionEffect = function(){
   player.poisoned = true;
   setTimeout(function(){
     player.poisoned = false;
-    $("#player").css("background","url('img/goat-jump.png')");
+    // $("#player").css("background","url('img/goat-jump.png')");
   },5000);
 };
 BonusObjects.prototype.heartsEffect = function(){
