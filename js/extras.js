@@ -31,27 +31,23 @@ BonusObjects.prototype.bonusGoDown = function(){
   });
 };
 
-BonusObjects.prototype.jetpackEffect = function(player){
-  player.background = "url('./img/GOAT-JETPACK.png')";
-  $(player.divPlayer).css("background-image", player.background);
+BonusObjects.prototype.jetpackEffect = function(player,tiles,game){
   if(player.y<400){
-
-    console.log(player.background);
   tiles.tilesGoDown();
-
 }
+  player.jetpack = true;
   player.speedY = 0;
   player.gravity = 0;
   tiles.speed = 50;
   game.backgroundSpeed = 8;
   game.score += 200;
 };
-BonusObjects.prototype.checkCollision = function(player){
+BonusObjects.prototype.checkCollision = function(player,tiles,game){
   var collide = $(".me").collision(".jetpack");
     if(collide[0]){
 
       $(collide).css("display","none");
-      this.jetpackEffect(player);
+      this.jetpackEffect(player,tiles,game);
 
       setTimeout(function(){
         bonus.resetToNormal();

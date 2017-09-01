@@ -228,6 +228,24 @@ font-family: 'Gochi Hand', cursive;
   font-family: 'Gochi Hand', cursive;
   color: #038c5a;
 }
+#resources{
+  position: absolute;
+width: 40px;
+height: 40px;
+background: #038c5a;
+border-radius: 50%;
+right: 700px;
+top: 700px;
+}
+#resources a{
+  font-size: 25px;
+text-decoration: none;
+margin-left: 15px;
+  font-family: 'Gochi Hand', cursive;
+padding-top: 10px;
+color: white;
+}
+
 @keyframes spin{
   0%{
     transform: rotate(0deg);

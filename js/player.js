@@ -96,13 +96,14 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
       }
         that.isFloor = true;
         that.speedY = 0;
+        that.jetpack = false;
       }
     });
   }
   rocks.checkCollision(game, player);
   bonus.destroyUs();
   tiles.destroyMe();
-  bonus.checkCollision(player);
+  bonus.checkCollision(player,tiles,game);
   tiles.checkHigher();
   game.updateScore();
   this.backgrounds(game);
@@ -144,6 +145,9 @@ Player.prototype.backgrounds = function(game){
   }
   if(game.keyLeft && !this.poisoned && !this.isFloor){
     this.background = "url('./img/goat-jump.png')";
+  }
+  if(this.jetpack){
+    this.background = "url('./img/GOAT-JETPACK.png')"
   }
   $(this.divPlayer).css("background-image",this.background);
 };
