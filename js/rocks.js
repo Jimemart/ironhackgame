@@ -19,10 +19,10 @@ Rocks.prototype.createRock = function(){
   var rockwidth = parseInt($(this.newRock).width());
   switch(rockwidth){
     case 100:
-    this.newRock.css("background-image", "url('img/rock3.png')");
+    this.newRock.css("background-image", "url('./img/rock3.png')");
     break;
     case 200:
-    this.newRock.css("background-image", "url('img/rock1.png')");
+    this.newRock.css("background-image", "url('./img/rock1.png')");
     break;
   }
   console.log($(this.newRock).width());

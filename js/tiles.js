@@ -41,13 +41,13 @@ Tile.prototype.createTile = function(){
       .css("left", this.left[this._pickRandom(this.left)])
       .css("width", this.width[this._pickRandom(this.width)]);
   if(this.newTile.width() === 300){
-    $(this.newTile).css("background-image","url('img/long-platform.png')");
+    $(this.newTile).css("background-image","url('./img/long-platform.png')");
   }
   else if(this.newTile.width() === 200){
-    $(this.newTile).css("background-image","url('img/medium-platform.png')");
+    $(this.newTile).css("background-image","url('./img/medium-platform.png')");
   }
   else{
-    $(this.newTile).css("background-image","url('img/small-platform.png')");
+    $(this.newTile).css("background-image","url('./img/small-platform.png')");
   }
   $("#board").append(this.newTile);
   tiles.alltiles = $(".tile");

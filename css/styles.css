@@ -1,11 +1,14 @@
 body{
-  background: #b6f279
+  background: url("../img/fondo-pantalla.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #board{
-  background: url("img/fondo.png");
+  background: url("../img/fondo.png");
   background-size: 200%;
   background-position: 50% 800;
-  height: 800px;
+  height: 750px;
   width: 800px;
   position: relative;
   margin: 0 auto;
@@ -13,7 +16,7 @@ body{
 .me{
   height:80px;
   width:80px;
-  background-image: url("img/goat-jump.png");
+  background-image: url("../img/goat-jump.png");
   background-size: contain;
   position: absolute;
   background-repeat: no-repeat;
@@ -36,7 +39,7 @@ body{
   background-position: top;
 }
 .iniciales{
-  background: url("img/long-platform.png");
+  background: url("../img/long-platform.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -48,7 +51,7 @@ body{
 #floor{
   bottom: 0;
   width: 100%;
-  background-image: url("img/long-platform.png");
+  background-image: url("../img/long-platform.png");
   background-size: cover;
 
 }
@@ -69,21 +72,21 @@ body{
   left: 200;
 }
 .jumping{
-  background: url("img/goat-jump.png");
+  background: url("../img/goat-jump.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
 .jetpack{
   width: 40px;
   height: 40px;
-  background-image: url("img/jetpack.jpg");
+  background-image: url("../img/jetpack.jpg");
   background-size: contain;
   position: absolute;
 }
 .heart{
   width: 40px;
   height: 40px;
-  background-image: url("img/heart.png");
+  background-image: url("../img/heart.png");
   background-size: contain;
   position: absolute;
   background-repeat: no-repeat;
@@ -91,7 +94,7 @@ body{
 .mylife1, .mylife2, .mylife3{
   width: 40px;
   height: 40px;
-  background-image: url("img/heart.png");
+  background-image: url("../img/heart.png");
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
@@ -99,7 +102,7 @@ body{
 .potion{
   width: 50px;
   height: 50px;
-  background-image: url("img/potion.png");
+  background-image: url("../img/potion.png");
   background-size: contain;
   position: absolute;
   background-repeat: no-repeat;
