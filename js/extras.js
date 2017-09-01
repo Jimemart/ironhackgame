@@ -32,9 +32,13 @@ BonusObjects.prototype.bonusGoDown = function(){
 };
 
 BonusObjects.prototype.jetpackEffect = function(player){
+  player.background = "url('./img/GOAT-JETPACK.png')";
+  $(player.divPlayer).css("background-image", player.background);
   if(player.y<400){
+
+    console.log(player.background);
   tiles.tilesGoDown();
-  player.background = "./img/GOAT-JETPACK.png"
+
 }
   player.speedY = 0;
   player.gravity = 0;

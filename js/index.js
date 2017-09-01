@@ -9,6 +9,7 @@ $("#start").on("click",function(){
   game.startMusic();
 });
 
+
 });
 
 $(document).keydown(function(e) {

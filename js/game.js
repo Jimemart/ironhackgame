@@ -115,7 +115,7 @@ Game.prototype.createEnviroment = function(){
   this.createLives();
   this.createScore();
   this.createTiles();
-
+  this.createDifficult();
 };
 Game.prototype.createLives = function(){
   var life = $("<div>").attr("id","lifestore");
@@ -130,6 +130,14 @@ Game.prototype.createLives = function(){
 Game.prototype.createScore = function(){
   var score = $("<div>").attr("id", "score");
   $("#board").append(score);
+};
+Game.prototype.createDifficult = function(){
+  var diff = $("<button>").attr("id","difficult").text("HARD");
+  $("#game").append(diff);
+  $("#difficult").on("click",function(){
+    game.hard = true;
+    $("#difficult").css("background","#ef3726");
+  });
 };
 Game.prototype.createTiles = function(){
 

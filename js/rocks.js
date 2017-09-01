@@ -49,7 +49,7 @@ Rocks.prototype.disappear = function(){
 Rocks.prototype.checkCollision = function(game, invencible){
   var rockCollision = $(".me").collision(".rock");
   if(rockCollision[0]){
-    if(game.lives >0){
+    if(game.lives >=0){
       if(!player.invencible){
 
       game.rescue(player);

@@ -45,7 +45,7 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
       if (game.score >= 50 && game.score % 50 == 0) {
         bonus.createObject();
       }
-      if(game.score >0 && game.score % 30 == 0 && this.y < 600){
+      if(game.score >0 && game.score % 40 == 0 && this.y < 600){
         rocks.createRock();
       }
       if(game.score > 200){
@@ -89,8 +89,10 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
         var theTile = this;
         $(that.divPlayer).removeClass("jumping");
         if(!$(this).hasClass("stay")){
-        // tiles.shakeTile(this);
-        // tiles.setSelfDestroy(tiles.destroy,this);
+          if(game.hard){
+        tiles.shakeTile(this);
+        tiles.setSelfDestroy(tiles.destroy,this);
+      }
       }
         that.isFloor = true;
         that.speedY = 0;

@@ -119,6 +119,19 @@ body{
   background-repeat: no-repeat;
 
 }
+#difficult{
+  position: absolute;
+  top:395px;
+  right: 50px;
+  height:70px;
+  width:70px;
+  font-size: 25px;
+  border: 2px solid black;
+  border-radius: 10%;
+  background: #ed756a;
+  color:white;
+  font-family: 'Gochi Hand', cursive;
+}
 .dashboard{
   width:800px;
   height: 800px;
@@ -204,6 +217,7 @@ font-family: 'Gochi Hand', cursive;
   top:210px;
   font-size:50px;
   left:50px;
+  font-family: 'Gochi Hand', cursive;
 }
 .again{
   padding: 20px;
