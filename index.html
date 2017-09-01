@@ -2,29 +2,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/styles.css">
-  <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="js/jquery-collision.js"></script>
-  <script type="text/javascript" src="js/game.js"></script>
-  <script type="text/javascript" src="js/player.js"></script>
-  <script type="text/javascript" src="js/tiles.js"></script>
-  <script type="text/javascript" src="js/extras.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/rocks.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/homepage.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
 <body>
-  <div id="game">
-  <button id = "start">START</button>
-  <div id = "score"></div>
-
-  <div id="board">
-
-    <div id="floor" class="tile stay"></div>
+<div class="myspace">
+  <div class="dashboard">
+    <img src="img/Inicio.png" width="100%">
+    <button id="go" ><a href="game.html">START</a></button>
+    <button id ="instructions">INSTRUCTIONS</button>
+    <div id="first-instruction" class="instr">
+      <img src="img/first-instruction.png" width="400px">
+      <button id="next1" class="next"><img src="img/arrow.png" width="20px" height="20px"></button>
+    </div>
+    <div id="second-instruction" class="instr">
+      <img src="img/SECOND-INSTRUCTION.png" width="400px">
+      <button id="next2" class="next"><img src="img/arrow.png" width="20px" height="20px"></button>
+    </div>
+    <div id="third-instruction" class="instr">
+      <img src="img/THIRD-INSTRUCTION.png" width="400px">
+      <button id="next3" class="next"><img src="img/arrow.png" width="20px" height="20px"></button>
+    </div>
+    <div id="fourth-instruction" class="instr">
+      <img src="img/fourth-instruction.png" width="400px">
+      <button id="next4" class="next"><img src="img/arrow.png" width="20px" height="20px"></button>
+    </div>
+    <div id="fith-instruction" class="instr">
+      <img src="img/FIFTH-INSTRUCTION.png" width="400px">
+      <button id="next5" class="next"><img src="img/arrow.png" width="20px" height="20px"></button>
+    </div>
+</div>
   </div>
+</div>
 </body>
 </html>

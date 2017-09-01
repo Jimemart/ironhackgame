@@ -48,7 +48,7 @@ Game.prototype.showScore = function(){
   var secondText = $("<h2>").text(this.score);
   var thirdText = $("<h2>").text("points");
   var butt = $("<button>").addClass("again").text("TRY AGAIN").attr("id","tryAgain");
-  butt.on("click",function(){this.restart();});
+  butt.on("click",function(){game.restart();});
   $(divScore).append(firstText).append(secondText).append(thirdText).append(butt);
   $("#board").append(divScore);
 };
@@ -104,7 +104,7 @@ Game.prototype.playerInvencible = function(player){
   setTimeout(function(){
     player.invencible = false;
     console.log(player.invencible);
-  },2000);
+  },4000);
 };
 Game.prototype.enviromentalMovement = function(){
   tiles.tilesGoDown();

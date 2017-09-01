@@ -31,12 +31,10 @@ BonusObjects.prototype.bonusGoDown = function(){
   });
 };
 
-BonusObjects.prototype.speedUp  = function(){
-
-};
-BonusObjects.prototype.jetpackEffect = function(){
+BonusObjects.prototype.jetpackEffect = function(player){
   if(player.y<400){
   tiles.tilesGoDown();
+  player.background = "./img/GOAT-JETPACK.png"
 }
   player.speedY = 0;
   player.gravity = 0;
@@ -44,12 +42,12 @@ BonusObjects.prototype.jetpackEffect = function(){
   game.backgroundSpeed = 8;
   game.score += 200;
 };
-BonusObjects.prototype.checkCollision = function(){
+BonusObjects.prototype.checkCollision = function(player){
   var collide = $(".me").collision(".jetpack");
     if(collide[0]){
 
       $(collide).css("display","none");
-      this.jetpackEffect();
+      this.jetpackEffect(player);
 
       setTimeout(function(){
         bonus.resetToNormal();

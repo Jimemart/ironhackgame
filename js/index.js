@@ -6,11 +6,8 @@ $("#start").on("click",function(){
   game = new Game();
   game.start();
   $("#start").css("display","none");
-  // game.startMusic();
+  game.startMusic();
 });
-
-
-
 
 });
 

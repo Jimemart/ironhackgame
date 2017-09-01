@@ -1,3 +1,20 @@
+html{
+  overflow: hidden;
+}
+#game{
+  background: url("../img/molde-juego.png");
+  background-size:contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  width: 1200px;
+  height: 1000px;
+  position: relative;
+}
+#lifestore{
+  position: absolute;
+  left:90px;
+  bottom: 200px;
+}
 body{
   background: url("../img/fondo-pantalla.jpg");
   background-position: bottom;
@@ -12,6 +29,8 @@ body{
   width: 800px;
   position: relative;
   margin: 0 auto;
+  top: 153px;
+  left: 4px;
 }
 .me{
   height:80px;
@@ -79,9 +98,10 @@ body{
 .jetpack{
   width: 40px;
   height: 40px;
-  background-image: url("../img/jetpack.jpg");
+  background-image: url("../img/jetpack.png");
   background-size: contain;
   position: absolute;
+  background-repeat: no-repeat;
 }
 .heart{
   width: 40px;
@@ -97,7 +117,64 @@ body{
   background-image: url("../img/heart.png");
   background-size: contain;
   background-repeat: no-repeat;
-  display: inline-block;
+
+}
+.dashboard{
+  width:800px;
+  height: 800px;
+  position: absolute;
+  left: 400px;
+  top:150px;
+}
+.myspace{
+  position: relative;
+}
+#start{
+  position: absolute;
+  top:500px;
+  left:500px;
+  z-index:3;
+  width:200px;
+  height:100px;
+  font-size:30px;
+  font-family: 'Gochi Hand', cursive;
+  border: 5px solid #038c5a;
+  background: #b6f279;
+  color: #038c5a;
+}
+.instr{
+  position: absolute;
+  top:190px;
+  left:250px;
+  z-index:4;
+  display:none;
+}
+.next{
+  position: absolute;
+  bottom:30px;
+  right: 30px;
+}
+#go,#instructions{
+  cursor:pointer;
+  position: absolute;
+  top:300px;
+  left:250px;
+  z-index:3;
+  width:400px;
+  height:100px;
+  font-size:50px;
+  font-family: 'Gochi Hand', cursive;
+  border: 5px solid #038c5a;
+  background: #b6f279;
+  color: #038c5a;
+  border-radius: 5%;
+}
+#instructions{
+  top: 450px;
+}
+#go a{
+  text-decoration: none;
+  color: #038c5a;
 }
 .potion{
   width: 50px;
@@ -121,6 +198,12 @@ body{
   line-height: 20px;
 font-family: 'Gochi Hand', cursive;
 
+}
+#score{
+  position: absolute;
+  top:210px;
+  font-size:50px;
+  left:50px;
 }
 .again{
   padding: 20px;

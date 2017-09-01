@@ -100,7 +100,7 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
   rocks.checkCollision(game, player);
   bonus.destroyUs();
   tiles.destroyMe();
-  bonus.checkCollision();
+  bonus.checkCollision(player);
   tiles.checkHigher();
   game.updateScore();
   this.backgrounds(game);
