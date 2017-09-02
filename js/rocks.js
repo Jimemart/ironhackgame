@@ -25,7 +25,6 @@ Rocks.prototype.createRock = function(){
     this.newRock.css("background-image", "url('./img/rock1.png')");
     break;
   }
-  console.log($(this.newRock).width());
   $("#board").append(this.newRock);
   this.allRocks = $(".rock");
 
@@ -51,7 +50,6 @@ Rocks.prototype.checkCollision = function(game, invencible){
   if(rockCollision[0]){
     if(game.lives >=0){
       if(!player.invencible){
-
       game.rescue(player);
     }
     }

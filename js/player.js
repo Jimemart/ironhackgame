@@ -38,9 +38,10 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
   }
   if (game.keyJump) {
     if (this.isFloor) {
+      game.score += 10;
       if (this.y >= 300) {
         tiles.createTile();
-        game.score += 10;
+
       }
       if (game.score >= 50 && game.score % 50 == 0) {
         bonus.createObject();
@@ -48,7 +49,7 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
       if(game.score >0 && game.score % 40 == 0 && this.y < 600){
         rocks.createRock();
       }
-      if(game.score > 200){
+      if(game.score > 200 && game.score % 100 === 0){
         game.dificult();
       }
 
@@ -86,8 +87,9 @@ Player.prototype.update = function(game,tiles,rocks,bonus) {
     var that = this;
     tiles.alltiles.each(function() {
       if (tiles.checkOnTile(that, $(this))) {
-        var theTile = this;
+        // var theTile = this;
         $(that.divPlayer).removeClass("jumping");
+
         if(!$(this).hasClass("stay")){
           if(game.hard){
         tiles.shakeTile(this);
@@ -147,12 +149,12 @@ Player.prototype.backgrounds = function(game){
     this.background = "url('./img/goat-jump.png')";
   }
   if(this.jetpack){
-    this.background = "url('./img/GOAT-JETPACK.png')"
+    this.background = "url('./img/GOAT-JETPACK.png')";
   }
   $(this.divPlayer).css("background-image",this.background);
 };
 Player.prototype.specialJumpRight = function(game){
-  if(game.keyRight && !this.poisoned){
+  if(game.keyRight && !this.poisoned && !this.jetpack){
     this.speedY = 30;
     $("#player").addClass("spin");
     setTimeout(function(){
@@ -161,7 +163,7 @@ Player.prototype.specialJumpRight = function(game){
   }
 };
 Player.prototype.specialJumpLeft = function(game){
-  if(game.keyLeft && !this.poisoned){
+  if(game.keyLeft && !this.poisoned && !this.jetpack){
     this.speedY = 30;
     $("#player").addClass("spin");
     setTimeout(function(){

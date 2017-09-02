@@ -76,15 +76,15 @@ BonusObjects.prototype.heartsEffect = function(){
   game.lives +=1;
   switch(game.lives){
     case 1:
-    $(".mylife1").css("display","inline-block")
+    $(".mylife1").css("display","block")
                 .addClass("life");
     break;
     case 2:
-    $(".mylife2").css("display","inline-block")
+    $(".mylife2").css("display","block")
                   .addClass("life");
     break;
     case 3:
-    $(".mylife3").css("display","inline-block")
+    $(".mylife3").css("display","block")
                   .addClass("life");
     break;
   }

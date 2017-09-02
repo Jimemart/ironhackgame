@@ -59,9 +59,9 @@ Game.prototype.updateScore = function(){
   $("#score").text(this.score);
 };
 Game.prototype.dificult = function(){
-  player.speedY = 30;
+  player.speedY += 10;
   player.gravity = 2;
-  tiles.speed = 20;
+  tiles.speed += 5;
   tiles.destroy = 0.4;
 };
 
